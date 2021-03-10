@@ -13,6 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $countries = [           
+            ['id'=>1,'name' => 'United States'],
+        ];
+        foreach ($countries as $country) {
+            \App\Models\Country::create($country);
+        }
+
+        $cities = [           
+            ['id'=>1,'name' => 'Miami', 'country_id'=> 1],
+            ['id'=>2,'name' => 'Orlando', 'country_id'=> 1],
+            ['id'=>3,'name' => 'New York', 'country_id'=> 1],
+        ];
+        foreach ($cities as $city) {
+            \App\Models\City::create($city);
+        }
+
     }
 }
