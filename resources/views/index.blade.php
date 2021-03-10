@@ -92,10 +92,13 @@
                         </div>
 
                         <div class="modal-body">
-                            <ul>
+                            <ul style="text-align: left !important">
+                                    <li> 
+                                        {{date('Y-m-d')}} - <b>{{$data['current_observation']['atmosphere']['humidity']}} %</b> 
+                                    </li>
                                 @foreach ($humidities as $humidity)
                                     <li>
-                                        {{ $humidity->created_at}} - <b> {{ $humidity->humidity}} % </b> 
+                                        {{ $humidity->created_at->format('Y-m-d')}} - <b> {{ $humidity->humidity}} % </b> 
                                     </li>
                                 @endforeach
                             </ul>

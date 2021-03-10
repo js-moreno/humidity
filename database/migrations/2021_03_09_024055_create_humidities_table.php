@@ -15,7 +15,7 @@ class CreateHumiditiesTable extends Migration
     {
         Schema::create('humidities', function (Blueprint $table) {
             $table->id();
-            $table->decimal('humidity', $precision = 5, $scale = 2);
+            $table->integer('humidity');
             $table->foreignId('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
