@@ -7,6 +7,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use App\Models\City;
+use App\Models\Humidity;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+
 
 class HumidityController extends Controller
 {
@@ -18,7 +21,7 @@ class HumidityController extends Controller
         if ($request->has('city')){
     
             $city = City::findOrFail($request->city);
-    
+
             try {
     
                 $url = 'https://weather-ydn-yql.media.yahoo.com/forecastrss';
@@ -51,11 +54,11 @@ class HumidityController extends Controller
                 
                 $response = json_decode($request->getBody(),true);
     
-                return view('index',["data" => $response, 'cities' => City::with('country')->orderBy('name')->get()]); 
+                return view('index',["data" => $response, 'cities' => City::with('country')->orderBy('name')->get(), "humidities" =>  Humidity::where('city_id', $city->id)->orderBy('created_at',"desc")->get() ]); 
     
             } catch (\Throwable $th) {
-        
-                throw  new \ServiceUnavailableHttpException();   
+                
+                throw  new ServiceUnavailableHttpException();   
     
             }
 

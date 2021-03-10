@@ -82,7 +82,7 @@
 
 
             <div class="modal fade" id="humidity-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">{{$data['location']['city']}}, {{$data['location']['country']}}</h5>
@@ -93,7 +93,11 @@
 
                         <div class="modal-body">
                             <ul>
-                                <li>50%</li>
+                                @foreach ($humidities as $humidity)
+                                    <li>
+                                        {{ $humidity->created_at}} - <b> {{ $humidity->humidity}} % </b> 
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

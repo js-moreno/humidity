@@ -21,8 +21,12 @@ class HumidityFactory extends Factory
      */
     public function definition()
     {
+        $cities = \App\Models\City::pluck('id')->toArray();
+
         return [
-            //
+            'humidity' => $this->faker->numberBetween(1,100),
+            'city_id' => $this->faker->randomElement($cities),
+            'created_at' => $this->faker->dateTime,
         ];
     }
 }

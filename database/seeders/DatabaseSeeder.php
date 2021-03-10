@@ -29,5 +29,9 @@ class DatabaseSeeder extends Seeder
             \App\Models\City::create($city);
         }
 
+        \App\Models\Humidity::factory()
+            ->count(50)
+            ->create();
+
     }
 }
