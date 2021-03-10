@@ -1,0 +1,40 @@
+header{
+    background: #87cefa61; 
+    padding: 5px;
+}
+
+header img{
+    vertical-align: baseline
+}
+
+header h1{
+    display:inline
+}
+
+@media (max-width: 767.98px) { 
+    header{
+        text-align: center;
+    }
+    footer{
+        text-align: center;
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    z-index: 1000;
+}
+
+.humidity-popover{
+    color: #179aea; 
+    text-align: center;
+}
+
+.leaflet-popup-content-wrapper{
+    max-width: 90%;
+}
